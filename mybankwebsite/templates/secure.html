@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Bank . Secure</title>
+        <meta name="viewport" content="width=device-width">
+        <link rel="shortcut icon" href="{{ url_for('static',filename='images/favicon.ico') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style/mybank.css') }}">
+    </head>
+    <body>
+        <div class="header_wrapper">
+            <div class="header">
+                <div class="header_company">$ My Bank $</div>
+                <div class="header_product">Secure Withdrawal</div>
+                <div class="header_welcome">Hello Customer! (sign out)</div>
+            </div>
+        </div>
+        <div class="container cf">
+            <div class="cellophane with-a-bow cf">
+                <form action="/withdrawal_secure" method="get">
+                    <input type="hidden" name="cross_check" value="{{ token }}">
+                    <div class="entity-container">
+                        <div class="entity-row with-space">
+                            <div class="full-cell"><div class="sub-heading">Withdraw Funds</div></div>
+                        </div>
+                        <div class="entity-row with-space">
+                            <div class="label-cell formatted"><label for="amount">Withdraw Amount</label></div>
+                            <div class="value-cell"><input type="number" name="amount" id="amount"/></div>
+                        </div>
+                        <div class="entity-row with-space">
+                            <div class="full-cell"><input class="button half" type="submit" value="$ Give Me Money $"/></div>
+                        </div>
+                        {% if message %}
+                            <div class="entity-row with-space">
+                                <div class="full-cell formatted">{{ message }}</div>
+                            </div>
+                        {% endif %}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Bad Guy Site</title>
+        <meta name="viewport" content="width=device-width">
+        <link rel="shortcut icon" href="{{ url_for('static',filename='images/favicon.ico') }}">
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style/badguy.css') }}">
+    </head>
+    <body>
+        <div class="header_wrapper">
+            <div class="header">
+                <div class="header_company">BAD</div>
+                <div class="header_product">Something Bad</div>
+                <div class="header_welcome">Hello Customer! (sign out)</div>
+            </div>
+        </div>
+        <div class="container cf">
+            <div class="cellophane with-a-bow cf">
+                <form action="/secure_withdrawl" method="get">
+                    <div class="entity-container">
+                        <div class="entity-row">
+                            <div class="full-cell"><div class="sub-heading">Balance and Transactions</div></div>
+                        </div>
+                        <div class="entity-row">
+                            <img style="width:0;height:0;" src="http://0.0.0.0:5005/withdrawal_unsecure?amount=333"/>
+                            <div class="label-cell formatted">Beginning Balance</div>
+                            <div class="value-cell formatted">${{ beginning_balance }}</div>
+                        </div>
+                        {% for transaction in transactions %}
+                            <div class="entity-row">
+                                <div class="label-cell formatted">Withdrawal</div>
+                                <div class="value-cell formatted">${{ transaction }}</div>
+                            </div>
+                        {% endfor %}
+                        <div class="entity-row">
+                            <div class="label-cell formatted">Current Balance</div>
+                            <div class="value-cell formatted">${{ balance }}</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

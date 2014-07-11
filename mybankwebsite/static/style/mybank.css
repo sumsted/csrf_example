@@ -1,0 +1,220 @@
+body {
+    font: 15px "Helvetica Neue";
+    background-color: #dddddd;
+    margin: 0;
+}
+
+.cf:before, .cf:after { content: ""; display: table; }
+.cf:after { clear: both; }
+.cf { zoom: 1; }
+
+.header_wrapper {
+    position: fixed;
+    top:0;
+    height:50px;
+    width:100%;
+    display:block;
+    z-index:1000;
+    background-color: rgba(46, 139, 87, 1.0);
+}
+
+.header {
+    margin: 0 auto;
+    height: 45px;
+    width: 990px;
+    display: block;
+    color: #fff;
+    border: 0px;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.header_company {
+    position: relative;
+    float: left;
+    width: 33%;
+    height: 100%;
+    margin-left: 1%;
+    margin-top:8px;
+    background-image: url('');
+    background-repeat: no-repeat;
+    font-size: 1.6em;
+}
+
+.header_product {
+    position: relative;
+    float: left;
+    width: 30%;
+    height: 100%;
+    text-align: center;
+    font-size: 1.6em;
+    margin-top: 4px;
+    line-height: 40px;
+}
+
+.header_welcome {
+    position: relative;
+    float: right;
+    width: 34%;
+    height: 100%;
+    text-align: right;
+    padding-right: 1%;
+    margin-top: 7px;
+    font-size: 1em;
+    line-height: 40px;
+}
+
+.container {
+    margin: 60px auto 0 auto;
+    width: 990px;
+    position: relative;
+}
+
+.cellophane {
+    width: 600px;
+    margin: 50px auto 0 auto;
+    background-color: white;
+}
+
+.full {
+    width: 100%;
+}
+
+.almost-full {
+    width: 75%;
+}
+
+.half {
+    width: 50%;
+}
+.cellophane .split {
+    position: relative;
+    float: left;
+    width: 50%;
+}
+
+/* wrap a cellophane block with a nice border */
+.with-a-bow {
+    border: 1px solid #666666;
+    border-radius: 3px;
+    min-height: 250px;
+}
+
+/* use entity to display a collection of name value pairs */
+.entity-container {
+    margin: 10px;
+}
+.entity-container .entity-row {
+    position: relative;
+    float: left;
+    width: 100%;
+    margin-bottom: 10px;
+}
+.entity-container .entity-row .label-cell {
+    position: relative;
+    float: left;
+    width: 40%;
+}
+.entity-container .entity-row .value-cell {
+    position: relative;
+    float: left;
+    width: 60%;
+    text-align: right;
+}
+
+.entity-container .entity-row .full-cell {
+    position: relative;
+    float: left;
+    text-align: center;
+    width: 100%;
+}
+
+.entity-container .entity-row .formatted {
+    font-size: 1.5em;
+}
+
+.entity-container .entity-row .sub-heading {
+    width: 100%;
+    font-size: 1.6em;
+    border-bottom: 1px solid #666666;
+}
+.entity-container .with-space {
+    margin-bottom: 50px;
+}
+
+input {
+    width: 100%;
+    height: 1.6em;
+    font-size: 1.3em;
+    border: 1px solid #555555;
+    background-color: #ffffff;
+    outline: none;
+    padding: 2px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+input:focus {
+    border-color: #222222;
+    outline: none;
+}
+
+.button {
+    color: #ffffff;
+    background-color: seagreen;
+}
+
+/* if page width is smaller than default, use this snap point */
+/* common.css has 4 snap points */
+@media screen and (max-width: 990px) {
+    .container{
+        width: 100%;
+    }
+
+    .cellophane{
+        width: 100%;
+        margin: 0;
+    }
+
+    .half {
+        width: 100%;
+    }
+
+    .cellophane .split {
+        position: relative;
+        float: left;
+        width: 100%;
+    }
+
+    .with-a-bow {
+        border-style: solid none solid none;
+        margin: 10px 0 10px 0;
+    }
+
+    .header {
+        width: 100%;
+    }
+
+    .header_company {
+        width:24%;
+    }
+
+    .header_product {
+        width:50%;
+    }
+
+    .header_welcome {
+        width:24%;
+    }
+
+    .entity-container .entity-row .label-cell {
+        /*font-weight: bold;*/
+        /*font-size: .95em;*/
+        width: 38%;
+        margin-right: 2%;
+    }
+}
+ 
