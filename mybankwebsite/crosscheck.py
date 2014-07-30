@@ -3,48 +3,21 @@ import uuid
 from flask import request, render_template
 
 
-class CrossCheck(object):
-    _instance = None
-
-    class CrossCheckSingleton:
-
-        def __init__(self):
-            self._salt = str(uuid.uuid4())
-
-        def generate_token(self):
-            token = str(uuid.uuid4())
-            return token, self._encode_token(token)
-
-        def valid_token(self, token, hashed):
-            return True if (hashed == self._encode_token(token)) else False
-
-        def _encode_token(self, token):
-            return hashlib.sha224(token + self._salt).hexdigest()
+class CrossCheck:
 
     def __init__(self):
-        if CrossCheck._instance is None:
-            CrossCheck._instance = CrossCheck.CrossCheckSingleton()
-        self._EventHandler_instance = CrossCheck._instance
+        self._salt = str(uuid.uuid4())
+        print 'salt: %s' % (self._salt)
 
-    def __getattr__(self, attr):
-        return getattr(self._instance, attr)
+    def generate_token(self):
+        token = str(uuid.uuid4())
+        return token, self._encode_token(token)
 
-    def __setattr__(self, attr, value):
-        return setattr(self._instance, attr, value)
+    def valid_token(self, token, hashed):
+        return True if (hashed == self._encode_token(token)) else False
 
-
-def cross_check(handler):
-    def decorator():
-        cc = CrossCheck()
-        token = request.args.get('cross_check', '')
-        cookie = request.cookies.get('cross_check')
-        result = None
-        if cc.valid_token(token, cookie):
-            result = handler()
-        else:
-            result = render_template('problem.html', problem='Request is not valid')
-        return result
-    return decorator
+    def _encode_token(self, token):
+        return hashlib.sha224(token + self._salt).hexdigest()
 
 
 if __name__ == '__main__':
