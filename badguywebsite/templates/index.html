@@ -2,9 +2,11 @@
 <html>
     <head>
         <title>Bad Guy Site</title>
-        <meta name="viewport" content="width=device-width">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" href="{{ url_for('static',filename='images/favicon.ico') }}">
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='style/badguy.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static',filename='style/reset.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static',filename='style/main.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static',filename='style/badguy.css') }}">
     </head>
     <body>
         <div class="header_wrapper">
@@ -15,30 +17,53 @@
             </div>
         </div>
         <div class="container cf">
-            <div class="cellophane with-a-bow cf">
-                <form action="/secure_withdrawl" method="get">
-                    <div class="entity-container">
-                        <div class="entity-row">
-                            <div class="full-cell"><div class="sub-heading">Balance and Transactions</div></div>
-                        </div>
-                        <div class="entity-row">
-                            <img style="width:0;height:0;" src="http://0.0.0.0:5005/withdrawal_unsecure?amount=333"/>
-                            <div class="label-cell formatted">Beginning Balance</div>
-                            <div class="value-cell formatted">${{ beginning_balance }}</div>
-                        </div>
-                        {% for transaction in transactions %}
-                            <div class="entity-row">
-                                <div class="label-cell formatted">Withdrawal</div>
-                                <div class="value-cell formatted">${{ transaction }}</div>
-                            </div>
-                        {% endfor %}
-                        <div class="entity-row">
-                            <div class="label-cell formatted">Current Balance</div>
-                            <div class="value-cell formatted">${{ balance }}</div>
-                        </div>
-                    </div>
-                </form>
+            <div id="main" role="main" class="cf">
+                <ul id="tiles" class="cf">
+                    <li data-twit-img-type="profile"><img src="{{ url_for('static', filename='images/image1.jpg') }}" width="250px" height="166px"><p>Here is some food</p></li>
+                    <li data-twit-img-type="profile"><img src="{{ url_for('static', filename='images/image2.jpg') }}" width="250px" height="166px"><p>Here is some food</p></li>
+                    <li data-twit-img-type="profile"><img src="{{ url_for('static', filename='images/image3.jpg') }}" width="250px" height="166px"><p>Here is some food</p></li>
+                    <li data-twit-img-type="profile"><img src="{{ url_for('static', filename='images/image4.jpg') }}" width="250px" height="166px"><p>Here is some food</p></li>
+                    <li data-twit-img-type="profile"><img src="{{ url_for('static', filename='images/image5.jpg') }}" width="250px" height="166px"><p>Here is some food</p></li>
+                    <li data-twit-img-type="profile"><img src="{{ url_for('static', filename='images/image6.jpg') }}" width="250px" height="166px"><p>Here is some food</p></li>
+                    <li data-twit-img-type="profile"><img src="{{ url_for('static', filename='images/image7.jpg') }}" width="250px" height="166px"><p>Here is some food</p></li>
+                    <li data-twit-img-type="profile"><img src="{{ url_for('static', filename='images/image8.jpg') }}" width="250px" height="166px"><p>Here is some food</p></li>
+                    <li data-twit-img-type="profile"><img src="{{ url_for('static', filename='images/image9.jpg') }}" width="250px" height="166px"><p>Here is some food</p></li>
+                    <li data-twit-img-type="profile"><img src="{{ url_for('static', filename='images/image10.jpg') }}" width="250px" height="166px"><p>Here is some food</p></li>
+                </ul>
             </div>
         </div>
+
+        <script src="{{ url_for('static',filename='scripts/jquery-1.11.1.min.js') }}"></script>
+        <script src="{{ url_for('static',filename='scripts/jquery.imagesloaded.js') }}"></script>
+        <script src="{{ url_for('static',filename='scripts/jquery.wookmark.min.js') }}"></script>
+        <script type="text/javascript">
+            $(function (){
+                var $tiles = $('#tiles'),
+                $handler = $('li', $tiles),
+                $main = $('#main'),
+                $window = $(window),
+                $document = $(document),
+                options = {
+                    autoResize: true, // This will auto-update the layout when the browser window is resized.
+                    container: $main, // Optional, used for some extra CSS styling
+                    offset: 20, // Optional, the distance between grid items
+                    itemWidth: 310 // Optional, the width of a grid item
+                };
+
+                function applyLayout() {
+                    $tiles.imagesLoaded(function() {
+                        // Destroy the old handler
+                        if ($handler.wookmarkInstance) {
+                            $handler.wookmarkInstance.clear();
+                        }
+
+                        // Create a new layout handler.
+                        $handler = $('li', $tiles);
+                        $handler.wookmark(options);
+                    });
+                    applyLayout();
+                }
+            });
+        </script>
     </body>
 </html>
