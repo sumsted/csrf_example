@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Bad Guy Site</title>
+        <title>Something Food</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="shortcut icon" href="{{ url_for('static',filename='images/favicon.ico') }}">
         <link rel="stylesheet" href="{{ url_for('static',filename='style/reset.css') }}">
@@ -11,24 +11,24 @@
     <body>
         <div class="header_wrapper">
             <div class="header">
-                <div class="header_company">BAD</div>
-                <div class="header_product">Something Bad</div>
+                <div class="header_company">SYM Inc.</div>
+                <div class="header_product">Something Food</div>
                 <div class="header_welcome">Hello Sucker! (sign out)</div>
             </div>
         </div>
         <div class="container cf">
             <div id="main" role="main" class="cf">
                 <ul id="tiles" class="cf">
-                    <li data-twit-img-type="profile"><img src="{{ url_for('static', filename='images/image1.jpg') }}" width="250px" height="166px"><p>Here is some food</p></li>
-                    <li data-twit-img-type="profile"><img src="{{ url_for('static', filename='images/image2.jpg') }}" width="250px" height="166px"><p>Here is some food</p></li>
-                    <li data-twit-img-type="profile"><img src="{{ url_for('static', filename='images/image3.jpg') }}" width="250px" height="166px"><p>Here is some food</p></li>
-                    <li data-twit-img-type="profile"><img src="{{ url_for('static', filename='images/image4.jpg') }}" width="250px" height="166px"><p>Here is some food</p></li>
-                    <li data-twit-img-type="profile"><img src="{{ url_for('static', filename='images/image5.jpg') }}" width="250px" height="166px"><p>Here is some food</p></li>
-                    <li data-twit-img-type="profile"><img src="{{ url_for('static', filename='images/image6.jpg') }}" width="250px" height="166px"><p>Here is some food</p></li>
-                    <li data-twit-img-type="profile"><img src="{{ url_for('static', filename='images/image7.jpg') }}" width="250px" height="166px"><p>Here is some food</p></li>
-                    <li data-twit-img-type="profile"><img src="{{ url_for('static', filename='images/image8.jpg') }}" width="250px" height="166px"><p>Here is some food</p></li>
-                    <li data-twit-img-type="profile"><img src="{{ url_for('static', filename='images/image9.jpg') }}" width="250px" height="166px"><p>Here is some food</p></li>
-                    <li data-twit-img-type="profile"><img src="{{ url_for('static', filename='images/image10.jpg') }}" width="250px" height="166px"><p>Here is some food</p></li>
+                    <li data-twit-img-type="profile"><a href="/detail"><img src="{{ url_for('static', filename='images/image1.jpg') }}" width="250px" height="166px"><p>Here is some food</p></a></li>
+                    <li data-twit-img-type="profile"><a href="/detail"><img src="{{ url_for('static', filename='images/image2.jpg') }}" width="250px" height="166px"><p>Here is some food</p></a></li>
+                    <li data-twit-img-type="profile"><a href="/detail"><img src="{{ url_for('static', filename='images/image3.jpg') }}" width="250px" height="166px"><p>Here is some food</p></a></li>
+                    <li data-twit-img-type="profile"><a href="/detail"><img src="{{ url_for('static', filename='images/image4.jpg') }}" width="250px" height="166px"><p>Here is some food</p></a></li>
+                    <li data-twit-img-type="profile"><a href="/detail"><img src="{{ url_for('static', filename='images/image5.jpg') }}" width="250px" height="166px"><p>Here is some food</p></a></li>
+                    <li data-twit-img-type="profile"><a href="/detail"><img src="{{ url_for('static', filename='images/image6.jpg') }}" width="250px" height="166px"><p>Here is some food</p></a></li>
+                    <li data-twit-img-type="profile"><a href="/detail"><img src="{{ url_for('static', filename='images/image7.jpg') }}" width="250px" height="166px"><p>Here is some food</p></a></li>
+                    <li data-twit-img-type="profile"><a href="/detail"><img src="{{ url_for('static', filename='images/image8.jpg') }}" width="250px" height="166px"><p>Here is some food</p></a></li>
+                    <li data-twit-img-type="profile"><a href="/detail"><img src="{{ url_for('static', filename='images/image9.jpg') }}" width="250px" height="166px"><p>Here is some food</p></a></li>
+                    <li data-twit-img-type="profile"><a href="/detail"><img src="{{ url_for('static', filename='images/image10.jpg') }}" width="250px" height="166px"><p>Here is some food</p></a></li>
                 </ul>
             </div>
         </div>
