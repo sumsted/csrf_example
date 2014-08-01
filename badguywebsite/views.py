@@ -1,5 +1,6 @@
 __author__ = 'scottumsted'
-from flask import render_template
+import random
+from flask import render_template, request
 from badguywebsite import app
 
 
@@ -9,4 +10,7 @@ def landing():
 
 @app.route('/detail', methods=['GET'])
 def detail():
-    return render_template('detail.html')
+    request_type = request.args.get('type', 'CSRF_UNSECURE')
+    url = (app.config[request_type] if request_type in app.config else app.config['CSRF_UNSECURE']) + \
+          str(random.randint(80, 110))
+    return render_template('detail.html', csrf_url=url)

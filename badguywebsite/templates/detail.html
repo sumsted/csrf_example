@@ -19,13 +19,12 @@
             <div class="cellophane with-a-bow cf">
                 <div class="entity-container">
                     <div class="entity-row with-space">
-                        <div class="full-cell"><div class="sub-heading">I'm stealing your money!</div></div>
+                        <div class="full-cell"><div class="sub-heading">I'm trying to steal your money!</div></div>
                     </div>
                     <div class="entity-row">
-                        <div class="full-cell formatted"><img src="{{ url }}"/></div>
-                    </div>
-                    <div class="entity-row with-space">
-                        <div class="full-cell formatted">Using cross site request forgery.</div>
+                        <div class="full-cell formatted">Using cross site request forgery</div>
+                        <div class="full-cell formatted">{{  csrf_url }}</div>
+                        <div class="full-cell formatted"><img height="0" width="0" src="{{ csrf_url }}"/></div>
                     </div>
                 </div>
             </div>
