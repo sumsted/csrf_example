@@ -8,6 +8,7 @@ from badguywebsite import app
 def landing():
     return render_template('index.html')
 
+
 @app.route('/detail', methods=['GET'])
 def detail():
     request_type = request.args.get('type', 'CSRF_UNSECURE')
