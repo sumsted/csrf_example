@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 
 <head>
     <meta charset="utf-8">
@@ -9,38 +9,52 @@
     <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
     <meta name="author" content="Hakim El Hattab">
 
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <link rel="stylesheet" href="css/reveal.min.css">
-    <link rel="stylesheet" href="css/theme/moon.css" id="theme">
+    <link rel="stylesheet" href="css/theme/simple.css" id="theme">
 
     <!-- For syntax highlighting -->
     <link rel="stylesheet" href="lib/css/zenburn.css">
 
     <style>
-        #slide p,
-        #slide2 blockquote {
+
+        .fix_copy {
             background: rgba(255, 255, 255, .6) !important;
             color: #333333 !important;
         }
-        #slide2 h2 {
+        .fix_white {
+            color: #ffffff !important;
+        }
+        .fix_brown {
             color: brown !important;
-            text-shadow: 2px 2px #ffffff !important;
         }
-        #slide3.predsent {
-            width: 1200px !important;
+        .fix_a {
+            text-decoration: none !important;
+            color: inherit !important;
         }
-        .wrap {
-            width: 310px;
+
+        img {
+            border: 0 !important;
+        }
+
+        .big_wrap {
+            width: 810px;
+            margin: 0 auto !important;
+        }
+
+        .frame_wrap {
+            width: 400px;
             height: 500px;
             padding: 0;
             overflow: hidden;
             position: relative;
             float: left;
         }
+
         .frame {
             -ms-zoom: 1;
             -ms-transform-origin: 0 0;
@@ -51,11 +65,26 @@
             -webkit-transform: scale(1);
             -webkit-transform-origin: 0 0;
         }
+
         .frame {
             width: 990px;
             height: 530px;
             overflow: hidden;
         }
+
+        .cf:before, .cf:after {
+            content: "";
+            display: table;
+        }
+
+        .cf:after {
+            clear: both;
+        }
+
+        .cf {
+            zoom: 1;
+        }
+
     </style>
     <!-- If the query includes 'print-pdf', include the PDF print sheet -->
     <script>
@@ -75,130 +104,158 @@
 
 <body>
 
-    <div class="reveal">
+<div class="reveal">
 
-        <!-- Any section element inside of this container is displayed as a slide -->
-        <div class="slides">
-            <section id="slide1" data-background="./batman.jpg">
-                <h1>CSRF</h1>
-                <h3>Cross Site Request Forgery</h3>
-                <p>
-                    <small><a href="mailto:scott@ezpz.gs">Scott Umsted</a>, August 18, 2014</small>
-                </p>
-            </section>
-            <section id="slide2" data-background="./otherguys.jpg">
-                <h2>Just tell us what happened!</h2>
-                <blockquote>
-                    I think the best way to tell this story is by starting at the end, briefly, then going back to the beginning; then periodically returning to the end, maybe giving different characters' perspectives throughout. Just to, you know, give it a bit of dynamism . Otherwise it's just sort of a linear story.
-                </blockquote>
-            </section>
-            <section id="slide3">
-                <h2>A tale of two sites</h2>
-                <div class="wrap">
-                    <iframe src="http://0.0.0.0:5005" class="frame"></iframe>
+    <!-- Any section element inside of this container is displayed as a slide -->
+    <div class="slides">
+        <section id="slide1" data-background="./batman.jpg">
+            <h1 class="fix_white">CSRF</h1>
+
+            <h3 class="fix_white">Cross Site Request Forgery</h3>
+
+            <p class="fix_white">
+                <small><a class="fix_a" href="mailto:scott@ezpz.gs">Scott Umsted</a>, August 18, 2014</small>
+            </p>
+        </section>
+        <section id="slide2" data-background="./otherguys.jpg">
+            <h2 class="fix_brown">Just tell us what happened!</h2>
+            <blockquote class="fix_copy">
+                I think the best way to tell this story is by starting at the end, briefly, then going back to the
+                beginning; then periodically returning to the end, maybe giving different characters' perspectives
+                throughout. Just to, you know, give it a bit of dynamism . Otherwise it's just sort of a linear story.
+            </blockquote>
+        </section>
+        <section>
+            <h2>What is CSRF?</h2><br/>
+            <p>Cross site request forgery is the act of exploiting from a user's browser a trust that the user has with another site.</p><br/>
+            <p>Take a look at the Open Web Application Security Project <a target="_blank" href="https://www.owasp.org/index.php/OWASP_Top_Ten_Cheat_Sheet">OWASP</a> for the list of top 10 risks.</p>
+        </section>
+        <section id="slide3">
+            <h2>Why is CSRF bad?</h2>
+            <div class="big_wrap cf">
+                <div class="frame_wrap">
+                    <iframe src="http://0.0.0.0:5005/unsecure" class="frame"></iframe>
                 </div>
-                <div class="wrap">
+                <div class="frame_wrap">
                     <iframe src="http://0.0.0.0:5005/balance" class="frame"></iframe>
                 </div>
-                <div class="wrap">
-                    <iframe src="http://0.0.0.0:5006" class="frame"></iframe>
-                </div>
-            </section>
-            <section id="slide4" data-background="./mask.jpg">
-                <h2>Stop CSRF</h2>
-                <blockquote>
-                    Do you feel lucky?
-                </blockquote>
-            </section>
-            <section id="slide5" data-background="./teamamerica.jpg">
-                <h2>Stop CSRF</h2>
-                <blockquote>
-                    Do you feel lucky?
-                </blockquote>
-            </section>
-            <section id="slide6">
-                <h2>Image of How</h2>
-                <ul>
-                    <li>user good</li>
-                    <li>user bad</li>
-                    <li>site good</li>
-                    <li>site bad</li>
-                </ul>
-            </section>
-            <section id="slide7">
-                <h2>Why does this happen?</h2>
-                <ul>
-                    <li>Open session with good site</li>
-                    <li>No referrer check on good site requests</li>
-                    <li>No request validation on good site requests</li>
-                    <li>XSS on good or bad site</li>
-                </ul>
-            </section>
-            <section id="slide9">
-                <h2>Image showing how to prevent</h2>
-                <ul>
-                    <li>High level</li>
-                    <li>Same as previous slide</li>
-                    <li>Mention token</li>
-                </ul>
-            </section>
-            <section id="slide10">
-                <h2>Image showing how to prevent</h2>
-                <ul>
-                    <li>Low level</li>
-                    <li>Show form display, with token and cookie hashed</li>
-                    <li>Show form processing with token check</li>
-                </ul>
-            </section>
-            <section id="slide11">
-                <h2>Display the View</h2>
-                view.py
+            </div>
+        </section>
+        <section id="slide3c">
+            <h2>Bank Source</h2>
+            <p>unsecure.html</p>
                 <pre><code data-trim contenteditable>
-@app.route('/', methods=['GET'])
-def display_secure():
-    token, hashed = cross_check.generate_token()
+<form action="/withdrawal_unsecure" method="get">
+...
+    <input type="number" name="amount" id="amount"/>
+...
+    <input class="button half" type="submit" value="$ Give Me Money $"/>
+...
+</form>
+                </code></pre>
+            <p>views.py</p>
+                <pre><code data-trim contenteditable>
+@app.route('/unsecure', methods=['GET'])
+def display_unsecure():
     message = request.args.get('message', None)
-    response = make_response(render_template('secure.html', token=token, message=message))
-    response.set_cookie('cross_check', hashed)
+    response = make_response(render_template('unsecure.html',message=message))
     return response
-                    </code></pre>
-                crosscheck.py
-                <pre><code data-trim contenteditable>
-class CrossCheck:
-    def generate_token(self):
-        token = str(uuid.uuid4())
-        return token, self._encode_token(token)
-    def _encode_token(self, token):
-        return hashlib.sha224(token + self._salt).hexdigest()
 
-                    </code></pre>
-
-            </section>
-            <section id="slide12">
-                <h2>Process the Form</h2>
-                view.py
-                <pre><code data-trim contenteditable>def csrf_check(handler):
-    def decorator():
-        token = request.args.get('cross_check', '')
-        cookie = request.cookies.get('cross_check')
-        result = None
-        if cross_check.valid_token(token, cookie):
-            result = handler()
-        else:
-            result = render_template('problem.html', problem='Request is not valid')
-        return result
-    return decorator</code></pre>
-                <pre><code data-trim contenteditable>@app.route('/withdrawal_secure', methods=['GET'])
-@csrf_check
-def withdrawal_secure():
+@app.route('/withdrawal_unsecure', methods=['GET'])
+def withdrawal_unsecure():
     amount = request.args.get('amount')
     transactions.append(amount)
     balance['amount'] -= int(amount)
-    return redirect('/secure?message=$'+amount+' withdrawn')</code></pre> 
-            </section>
-            <section id="slide13">
-                <h2>Process the Form</h2>
-                crosscheck.py
+    return redirect('/unsecure?message=$'+amount+' withdrawn')
+                </code></pre>
+        </section>
+        <section id="slide3b">
+            <h2>What can happen?</h2>
+            <div class="big_wrap cf">
+                <div class="frame_wrap">
+                    <iframe src="http://0.0.0.0:5006" class="frame"></iframe>
+                </div>
+                <div class="frame_wrap">
+                    <iframe src="http://0.0.0.0:5005/balance" class="frame"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <section id="slide3e">
+            <h2>What just happened?</h2>
+            <p>Food exploited the trust with Bank</p>
+            <p><img src="./image1.png"/></p>
+        </section>
+        <section id="slide3d">
+            <h2>Food Source</h2>
+            <p>food site - detail.html</p>
+                <pre><code data-trim contenteditable>
+<div class="entity-container">
+    <div class="entity-row with-space">
+        <div class="full-cell">
+            <div class="sub-heading">I'm trying to steal your money!</div>
+        </div>
+    </div>
+...
+<img height="0" width="0" src="http://0.0.0.0:5005/withdrawal_unsecure?amount=86"/>
+...
+</div>
+                </code></pre>
+            <p>bank site - views.py</p>
+                <pre><code data-trim contenteditable>
+@app.route('/withdrawal_unsecure', methods=['GET'])
+def withdrawal_unsecure():
+    amount = request.args.get('amount')
+    transactions.append(amount)
+    balance['amount'] -= int(amount)
+    return redirect('/unsecure?message=$'+amount+' withdrawn')
+                </code></pre>
+        </section>
+        <section id="slide4" data-background="./mask.jpg">
+            <h2 class="fix_white">Stop CSRF</h2>
+            <blockquote class="fix_white">
+                Do you feel lucky?
+            </blockquote>
+        </section>
+        <section id="slide7">
+            <h2>Why does CSRF happen?</h2>
+            <ul>
+                <li>Open session with good site</li>
+                <li>No referrer check on good site requests</li>
+                <li>No request validation on good site requests</li>
+                <li>XSS on good site</li>
+            </ul>
+        </section>
+        <section id="slide7">
+            <h2>How do we stop it?</h2>
+            <ul>
+                <li>CSRF Token</li>
+                <li>Prevent XSS, cross site scripting, encode all user supplied data before displaying</li>
+                <li>Check referrer</li>
+            </ul>
+        </section>
+        <section id="slide9">
+            <h2>Using a token</h2>
+            <p><img src="./image2.png"/></p>
+        </section>
+        <section id="slide10">
+            <h2>The details</h2>
+            <p><img src="./image3.png"/></p>
+        </section>
+        <section id="slide14a">
+            <h2>Form secured</h2>
+            <div class="big_wrap cf">
+                <div class="frame_wrap">
+                    <iframe src="http://0.0.0.0:5005/secure" class="frame"></iframe>
+                </div>
+                <div class="frame_wrap">
+                    <iframe src="http://0.0.0.0:5005/balance" class="frame"></iframe>
+                </div>
+            </div>
+        </section>
+        <section id="slide13">
+            <h2>Managing the token</h2>
+            crosscheck.py
                 <pre><code data-trim contenteditable>
 class CrossCheck:
 
@@ -215,92 +272,154 @@ class CrossCheck:
 
     def _encode_token(self, token):
         return hashlib.sha224(token + self._salt).hexdigest()
+                </code></pre>
+
+        </section>
+        <section id="slide11">
+            <h2>Display the view</h2>
+            view.py
+                <pre><code data-trim contenteditable>@app.route('/', methods=['GET'])
+def display_secure():
+    token, hashed = cross_check.generate_token()
+    message = request.args.get('message', None)
+    response = make_response(render_template('secure.html',
+                                    token=token, message=message))
+    response.set_cookie('cross_check', hashed)
+    return response
+                </code></pre>
+            crosscheck.py
+                <pre><code data-trim contenteditable>class CrossCheck:
+    def generate_token(self):
+        token = str(uuid.uuid4())
+        return token, self._encode_token(token)
+
+    def _encode_token(self, token):
+        return hashlib.sha224(token + self._salt).hexdigest()
+                </code></pre>
+
+        </section>
+        <section id="slide11a">
+            <h2>Display the view</h2>
+            secure.html
+                <pre><code data-trim contenteditable>
+<form action="/withdrawal_secure" method="get">
+...
+    <input type="hidden" name="cross_check" value="{{ token }}">
+...
+    <input type="number" name="amount" id="amount"/>
+...
+    <input class="button half" type="submit" value="$ Give Me Money $"/>
+...
+</form>
                     </code></pre>
+        </section>
+        <section id="slide12">
+            <h2>Process the form</h2>
+            view.py
+                <pre><code data-trim contenteditable>def csrf_check(handler):
+    def decorator():
+        token = request.args.get('cross_check', '')
+        cookie = request.cookies.get('cross_check')
+        result = None
+        if cross_check.valid_token(token, cookie):
+            result = handler()
+        else:
+            result = render_template('problem.html', problem='Request is not valid')
+            return result
+        return decorator</code></pre>
+                <pre><code data-trim contenteditable>@app.route('/withdrawal_secure', methods=['GET'])
+@csrf_check
+def withdrawal_secure():
+    amount = request.args.get('amount')
+    transactions.append(amount)
+    balance['amount'] -= int(amount)
+    return redirect('/secure?message=$'+amount+' withdrawn')</code></pre>
+        </section>
 
-            </section>
-            <section id="slide14">
-                <h2>Another example</h2>
-                <ul>
-                    <li>securebank</li>
-                    <li>balance</li>
-                    <li>pin</li>
-                </ul>
-            </section>
-            <section id="slide15">
-                <h2>Full Screen</h2>
-                <ul>
-                    <li>Look at secured in chrome</li>
-                    <li>manipulate page in dev tools</li>
-                </ul>
-            </section>
-            <section id="slide16">
-                <h2>Full Screen</h2>
-                <ul>
-                    <li>pycharm code review</li>
-                </ul>
-            </section>
-            <section id="slide17">
-                <h2>Summarize</h2>
-                <ul>
-                    <li>what, and prevention</li>
-                    <li>owasp, xss, wtform, django, xss prevention</li>
-                </ul>
-            </section>
-        </div>
-
+        <section id="slide14b">
+            <h2>Let's try again</h2>
+            <div class="big_wrap cf">
+                <div class="frame_wrap">
+                    <iframe src="http://0.0.0.0:5006/" class="frame"></iframe>
+                </div>
+                <div class="frame_wrap">
+                    <iframe src="http://0.0.0.0:5005/balance" class="frame"></iframe>
+                </div>
+            </div>
+        </section>
+        <section id="slide15">
+            <h2>Go full screen</h2>
+            <ul>
+                <li>Look at secured in chrome</li>
+                <li>Manipulate page in dev tools</li>
+                <li>Look at python code</li>
+            </ul>
+        </section>
+        <section id="slide5" data-background="./teamamerica.jpg">
+            <h2 class="fix_white">Mission Accomplished!</h2>
+        </section>
+        <section id="slide17">
+            <h2>Summarize</h2>
+            <ul>
+                <li>what, and prevention</li>
+                <li>owasp, xss, wtform, django, xss prevention</li>
+            </ul>
+        </section>
     </div>
 
-    <script src="lib/js/head.min.js"></script>
-    <script src="js/reveal.min.js"></script>
+</div>
 
-    <script>
-        // Full list of configuration options available here:
-         // https://github.com/hakimel/reveal.js#configuration
-        Reveal.initialize({
-            controls: true,
-            progress: true,
-            history: true,
-            center: true,
+<script src="lib/js/head.min.js"></script>
+<script src="js/reveal.min.js"></script>
 
-            theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-            transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+<script>
+    // Full list of configuration options available here:
+    // https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
 
-            // Parallax scrolling
-            // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-            // parallaxBackgroundSize: '2100px 900px',
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
 
-            // Optional libraries used to extend on reveal.js
-            dependencies: [
-                {
-                    src: 'lib/js/classList.js',
-                    condition: function () {
-                        return !document.body.classList;
-                    }
-                },
-                {
-                    src: 'plugin/highlight/highlight.js',
-                    async: true,
-                    callback: function () {
-                        hljs.initHighlightingOnLoad();
-                    }
-                },
-                {
-                    src: 'plugin/zoom-js/zoom.js',
-                    async: true,
-                    condition: function () {
-                        return !!document.body.classList;
-                    }
-                },
-                {
-                    src: 'plugin/notes/notes.js',
-                    async: true,
-                    condition: function () {
-                        return !!document.body.classList;
-                    }
+        // Parallax scrolling
+        // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+        // parallaxBackgroundSize: '2100px 900px',
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+            {
+                src: 'lib/js/classList.js',
+                condition: function () {
+                    return !document.body.classList;
                 }
-    ]
-        });
-    </script>
+            },
+            {
+                src: 'plugin/highlight/highlight.js',
+                async: true,
+                callback: function () {
+                    hljs.initHighlightingOnLoad();
+                }
+            },
+            {
+                src: 'plugin/zoom-js/zoom.js',
+                async: true,
+                condition: function () {
+                    return !!document.body.classList;
+                }
+            },
+            {
+                src: 'plugin/notes/notes.js',
+                async: true,
+                condition: function () {
+                    return !!document.body.classList;
+                }
+            }
+        ]
+    });
+</script>
 
 </body>
 

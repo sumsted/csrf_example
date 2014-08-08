@@ -5,17 +5,39 @@ body {
     margin: 0;
 }
 
-.cf:before, .cf:after { content: ""; display: table; }
-.cf:after { clear: both; }
-.cf { zoom: 1; }
+.cf:before, .cf:after {
+    content: "";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
+.cf {
+    zoom: 1;
+}
+
+.show_mobile {
+    display: none;
+}
+
+.show_desktop {
+    display: block;
+}
+
+.header a {
+    text-decoration: none;
+    color: inherit;
+}
 
 .header_wrapper {
     position: fixed;
-    top:0;
-    height:50px;
-    width:100%;
-    display:block;
-    z-index:1000;
+    top: 0;
+    height: 50px;
+    width: 100%;
+    display: block;
+    z-index: 1000;
     background-color: rgb(201, 24, 57);
 }
 
@@ -23,7 +45,6 @@ body {
     margin: 0 auto;
     height: 45px;
     width: 990px;
-    display: block;
     color: #fff;
     border: 0px;
     padding: 0;
@@ -38,7 +59,7 @@ body {
     width: 33%;
     height: 100%;
     margin-left: 1%;
-    margin-top:10px;
+    margin-top: 10px;
     background-image: url('');
     background-repeat: no-repeat;
     font-size: 1.6em;
@@ -90,6 +111,7 @@ body {
 .half {
     width: 50%;
 }
+
 .cellophane .split {
     position: relative;
     float: left;
@@ -107,17 +129,20 @@ body {
 .entity-container {
     margin: 10px;
 }
+
 .entity-container .entity-row {
     position: relative;
     float: left;
     width: 100%;
     margin-bottom: 10px;
 }
+
 .entity-container .entity-row .label-cell {
     position: relative;
     float: left;
     width: 40%;
 }
+
 .entity-container .entity-row .value-cell {
     position: relative;
     float: left;
@@ -141,6 +166,7 @@ body {
     font-size: 1.6em;
     border-bottom: 1px solid #666666;
 }
+
 .entity-container .with-space {
     margin-bottom: 50px;
 }
@@ -171,11 +197,19 @@ input:focus {
 /* if page width is smaller than default, use this snap point */
 /* common.css has 4 snap points */
 @media screen and (max-width: 990px) {
-    .container{
+    .show_mobile {
+        display: block;
+    }
+
+    .show_desktop {
+        display: none;
+    }
+
+    .container {
         width: 100%;
     }
 
-    .cellophane{
+    .cellophane {
         width: 100%;
         margin: 0;
     }
@@ -200,15 +234,15 @@ input:focus {
     }
 
     .header_company {
-        width:24%;
+        width: 24%;
     }
 
     .header_product {
-        width:50%;
+        width: 50%;
     }
 
     .header_welcome {
-        width:24%;
+        width: 24%;
     }
 
     .entity-container .entity-row .label-cell {
