@@ -213,10 +213,7 @@ def withdrawal_unsecure():
                 </code></pre>
         </section>
         <section id="slide8" data-background="./mask.jpg">
-            <h2 class="fix_white">Stop CSRF</h2>
-            <blockquote class="fix_white">
-                Do you feel lucky?
-            </blockquote>
+            <h1 class="fix_white">Stop CSRF</h1>
         </section>
         <section id="slide9">
             <h2>Why does CSRF happen?</h2>
@@ -230,7 +227,7 @@ def withdrawal_unsecure():
         <section id="slide10">
             <h2>How do we stop it?</h2>
             <ul>
-                <li>CSRF Token</li>
+                <li>CSRF token checked on all requests</li>
                 <li>Prevent XSS, cross site scripting, encode all user supplied data before displaying</li>
                 <li>Check referrer</li>
                 <li>Use a framework, wtforms, django</li>
@@ -262,7 +259,7 @@ def withdrawal_unsecure():
 class CsrfCheck:
 
     def __init__(self):
-        self._salt = str(uuid.uuid4())
+        self._salt = app.config['CSRF_SALT'] # from uuidgen
         print 'salt: %s' % (self._salt)
 
     def generate_token(self):
