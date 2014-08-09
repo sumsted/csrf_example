@@ -135,10 +135,10 @@
             <h2>Why is CSRF bad?</h2>
             <div class="big_wrap cf">
                 <div class="frame_wrap">
-                    <iframe src="http://0.0.0.0:5005/unsecure" class="frame"></iframe>
+                    <iframe src="http://demobank.ezpz.gs/unsecure" class="frame"></iframe>
                 </div>
                 <div class="frame_wrap">
-                    <iframe src="http://0.0.0.0:5005/balance" class="frame"></iframe>
+                    <iframe src="http://demobank.ezpz.gs/balance" class="frame"></iframe>
                 </div>
             </div>
         </section>
@@ -174,10 +174,10 @@ def withdrawal_unsecure():
             <h2>What can happen?</h2>
             <div class="big_wrap cf">
                 <div class="frame_wrap">
-                    <iframe src="http://0.0.0.0:5006" class="frame"></iframe>
+                    <iframe src="http://demofood.ezpz.gs" class="frame"></iframe>
                 </div>
                 <div class="frame_wrap">
-                    <iframe src="http://0.0.0.0:5005/balance" class="frame"></iframe>
+                    <iframe src="http://demobank.ezpz.gs/balance" class="frame"></iframe>
                 </div>
             </div>
         </section>
@@ -198,7 +198,7 @@ def withdrawal_unsecure():
         </div>
     </div>
 ...
-<img height="0" width="0" src="http://0.0.0.0:5005/withdrawal_unsecure?amount=86"/>
+<img height="0" width="0" src="http://demobank.ezpz.gs/withdrawal_unsecure?amount=86"/>
 ...
 </div>
                 </code></pre>
@@ -248,18 +248,18 @@ def withdrawal_unsecure():
             <h2>Form secured</h2>
             <div class="big_wrap cf">
                 <div class="frame_wrap">
-                    <iframe src="http://0.0.0.0:5005/secure" class="frame"></iframe>
+                    <iframe src="http://demobank.ezpz.gs/secure" class="frame"></iframe>
                 </div>
                 <div class="frame_wrap">
-                    <iframe src="http://0.0.0.0:5005/balance" class="frame"></iframe>
+                    <iframe src="http://demobank.ezpz.gs/balance" class="frame"></iframe>
                 </div>
             </div>
         </section>
         <section id="slide14">
             <h2>Managing the token</h2>
-            crosscheck.py
+            csrfcheck.py
                 <pre><code data-trim contenteditable>
-class CrossCheck:
+class CsrfCheck:
 
     def __init__(self):
         self._salt = str(uuid.uuid4())
@@ -282,15 +282,19 @@ class CrossCheck:
             view.py
                 <pre><code data-trim contenteditable>@app.route('/', methods=['GET'])
 def display_secure():
-    token, hashed = cross_check.generate_token()
+    cc = CsrfCheck()
+    token, hashed = cc.generate_token()
     message = request.args.get('message', None)
     response = make_response(render_template('secure.html',
                                     token=token, message=message))
     response.set_cookie('cross_check', hashed)
     return response
                 </code></pre>
-            crosscheck.py
-                <pre><code data-trim contenteditable>class CrossCheck:
+            csrfcheck.py
+                <pre><code data-trim contenteditable>class CsrfCheck:
+    def __init__(self):
+        self._salt = app.config['CSRF_SALT']
+
     def generate_token(self):
         token = str(uuid.uuid4())
         return token, self._encode_token(token)
@@ -314,6 +318,7 @@ def display_secure():
 ...
 </form>
                     </code></pre>
+            <p>There's also a cookie</p>
         </section>
         <section id="slide17">
             <h2>Process the form</h2>
@@ -342,10 +347,10 @@ def withdrawal_secure():
             <h2>Let's try again</h2>
             <div class="big_wrap cf">
                 <div class="frame_wrap">
-                    <iframe src="http://0.0.0.0:5006/" class="frame"></iframe>
+                    <iframe src="http://demofood.ezpz.gs" class="frame"></iframe>
                 </div>
                 <div class="frame_wrap">
-                    <iframe src="http://0.0.0.0:5005/balance" class="frame"></iframe>
+                    <iframe src="http://demobank.ezpz.gs/balance" class="frame"></iframe>
                 </div>
             </div>
         </section>

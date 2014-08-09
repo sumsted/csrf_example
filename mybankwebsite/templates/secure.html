@@ -21,7 +21,7 @@
         <div class="container cf">
             <div class="cellophane with-a-bow cf">
                 <form action="/withdrawal_secure" method="get">
-                    <input type="hidden" name="cross_check" value="{{ token }}">
+                    <input type="hidden" name="csrf_check" value="{{ token }}">
                     <div class="entity-container">
                         <div class="entity-row with-space">
                             <div class="full-cell"><div class="sub-heading">Withdraw Funds</div></div>
