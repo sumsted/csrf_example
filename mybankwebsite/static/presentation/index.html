@@ -329,8 +329,8 @@ def display_secure():
             result = handler()
         else:
             result = render_template('problem.html', problem='Request is not valid')
-            return result
-        return decorator</code></pre>
+           return result
+    return decorator</code></pre>
                 <pre><code data-trim contenteditable>@app.route('/withdrawal_secure', methods=['GET'])
 @csrf_check
 def withdrawal_secure():
